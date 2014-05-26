@@ -1,6 +1,5 @@
-# depends upon rpam and etc
+# depends upon rpam
 require "rpam"
-require "etc"
 
 # then the rest of the strategy
 require "omniauth-pam/version"
