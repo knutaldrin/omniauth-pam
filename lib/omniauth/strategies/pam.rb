@@ -1,3 +1,5 @@
+require 'Digest'
+
 module OmniAuth
   module Strategies
     class PAM
@@ -55,6 +57,10 @@ module OmniAuth
 
       info do
         info = { :nickname => uid, :name => uid, :email => primary_email }
+      end
+      
+      credentials do
+        { 'token' => (Digest::SHA2.new << uid), 'secret' => (Digest::SHA2.new << primary_email) }
       end
     end
   end
