@@ -23,10 +23,10 @@ module OmniAuth
       end
 
       def callback_phase
-        rpam_opts = Hash.new
-        rpam_opts[:service] = options[:service] unless options[:service].nil?
+        #rpam_opts = Hash.new
+        #rpam_opts[:service] = options[:service] unless options[:service].nil?
 
-        unless Rpam.auth(request['username'], request['password'], rpam_opts)
+        unless Rpam.auth(request['username'], request['password'])
           return fail!(:invalid_credentials)
         end
 
@@ -36,9 +36,17 @@ module OmniAuth
       uid do
         request['username']
       end
+      
+      primary_email do
+        "#{uid}@stud.ntnu.no"
+      end
+      
+      emails do
+        []
+      end
 
       info do
-        info = { :nickname => uid, :name => uid }
+        info = { :nickname => uid, :name => uid, :email => primary_email }
       end
     end
   end
