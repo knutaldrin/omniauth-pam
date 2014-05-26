@@ -56,6 +56,7 @@ module OmniAuth
       info do
         info = { :nickname => uid, :name => uid, :email => primary_email }
       end
+    end
   end
 end
 
