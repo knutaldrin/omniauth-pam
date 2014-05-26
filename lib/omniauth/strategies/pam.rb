@@ -48,6 +48,10 @@ module OmniAuth
       def emails
         return [primary_email]
       end
+      
+      def email_access_allowed?
+        options['scope'] =~ /user/
+      end
 
       info do
         info = { :nickname => uid, :name => uid, :email => primary_email }
