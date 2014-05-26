@@ -37,12 +37,16 @@ module OmniAuth
         request['username']
       end
       
-      primary_email do
-        "#{uid}@stud.ntnu.no"
+      def primary_email
+        return "#{uid}@stud.ntnu.no"
       end
       
-      emails do
-        []
+      def email
+        return primary_email
+      end
+      
+      def emails
+        return [primary_email]
       end
 
       info do
