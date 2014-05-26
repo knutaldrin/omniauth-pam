@@ -1,4 +1,4 @@
-require 'Digest'
+require 'digest'
 
 module OmniAuth
   module Strategies
